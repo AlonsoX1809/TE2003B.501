@@ -1,18 +1,9 @@
-module multiplexor(
-	 input [31:0] in0,
-	 input [31:0] in1,
-	 input [31:0] in2,
-	 input [1:0] selector,
-	 output reg [31:0] out
+module multiplexor #(parameter N = 2) (
+    input  [N*32-1:0]        mux_in,
+    input  [$clog2(N)-1:0]   mux_sel,
+    output reg [31:0]        mux_out
 );
+    always @(*)
+        mux_out = mux_in[(mux_sel*32) +: 32]; 
 
-	always @(*) begin
-		case(selector)
-			2'b00: out = in0;
-			2'b01: out = in1;
-			2'b10: out = in2;
-			2'b11: out = 0;
-		endcase
-	end
-	
 endmodule
