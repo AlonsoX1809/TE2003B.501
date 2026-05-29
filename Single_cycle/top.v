@@ -78,13 +78,11 @@ module top(
 		.ImmExt(ImmExt)
 	);
 	
-	multiplexor mmux1 (
-		.in0(RD2),
-		.in1(ImmExt),
-		.in2(32'b0),
-		.selector(ALUSrc), // Cuidar este porque no son los mismos bits, tengo que cambiar eso
-		.out(SrcB)
-	);
+	 multiplexor #(.N(2)) mmux1 (
+        .mux_in ({ImmExt, RD2}),   
+        .mux_sel(ALUSrc),           
+        .mux_out(SrcB)
+    );
 	
 	ALU mALU(
 		.A(RD1),
@@ -103,13 +101,11 @@ module top(
 		.Data_out (ReadData)
 	);
 	
-	multiplexor mmux2 (
-		.in0(ALUResult),
-		.in1(ReadData),
-		.in2(PCPlus4),
-		.selector(ResultSrc), // estos bits estan bien
-		.out(WD3)
-	);
+	multiplexor #(.N(3)) mmux2 (
+        .mux_in ({PCPlus4, ReadData, ALUResult}), 
+        .mux_sel(ResultSrc),                       
+        .mux_out(WD3)
+    );
 	
 	
 	wire [31:0] cuatro;
@@ -133,12 +129,10 @@ module top(
 		.PCSrc(PCSrc)
 	);
 	
-	multiplexor mmux3 (
-		.in0(PCPlus4),
-		.in1(PCTarget),
-		.in2(32'b0),
-		.selector(PCSrc), // Cuidar este porque no son los mismos bits, tengo que cambiar eso
-		.out(PCNext)
-	);
+	multiplexor #(.N(2)) mmux3 (
+        .mux_in ({PCTarget, PCPlus4}), 
+        .mux_sel(PCSrc),               
+        .mux_out(PCNext)
+    );
 	
 endmodule
