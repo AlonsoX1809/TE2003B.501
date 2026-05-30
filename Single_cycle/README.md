@@ -47,8 +47,8 @@ Se desarrolló un testbench para verificar el módulo 'top.v', aplicando los cic
 ## Diagrama RTL:
 El siguiente diagrama muestra la implementación lógica generada por Quartus a partir del código Verilog del módulo top. 
 
-![Diagrama RTL](imagenes/rtlviewer1.png)
-![Diagrama RTL](imagenes/rtlviewer2.png)
+![Diagrama RTL](imagenes/rtlview1.png)
+![Diagrama RTL](imagenes/rtlview2.png)
 
 ## Waveform: 
 A continuación se observa la simulación temporal del circuito, donde se verifica el comportamiento correcto del single cycle:
