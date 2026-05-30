@@ -42,5 +42,15 @@ El módulo sumador es donde se hace la suma de direcciones para el cálculo del 
 
 El módulo BranchComparator compara registros para instrucciones de salto condicional. 
 
+## Testbench:
+Se desarrolló un testbench para verificar el módulo 'top.v', aplicando los ciclos de reloj para que pueda empezar a ejecutar las instrucciones del archivo instrMem.hex, y así observar los resultados. 
+## Diagrama RTL:
+El siguiente diagrama muestra la implementación lógica generada por Quartus a partir del código Verilog del módulo top. 
 
+![Diagrama RTL](imagenes/rtlviewer1.png)
+![Diagrama RTL](imagenes/rtlviewer2.png)
 
+## Waveform: 
+A continuación se observa la simulación temporal del circuito, donde se verifica el comportamiento correcto del single cycle:
+
+![Simulación](imagenes/sim.png)
